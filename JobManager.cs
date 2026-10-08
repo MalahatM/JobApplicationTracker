@@ -7,4 +7,15 @@ class JobManager
     {
         Applications.Add(application);
     }
+	// Method to update the status of a job application based on the company name
+	public void UpdateStatus(string companyName, ApplicationStatus newStatus)
+	{
+		var application = Applications.FirstOrDefault(a => a.CompanyName == companyName);
+		if (application != null)
+		{
+			application.Status = newStatus;
+		}
+		
+	}
+	
 }
