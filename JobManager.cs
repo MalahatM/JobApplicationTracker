@@ -1,0 +1,21 @@
+class JobManager
+{
+// List to store job applications
+    public List<JobApplication> Applications { get; set; } = new List<JobApplication>();
+// Method to add a job application to the list
+    public void AddJob(JobApplication application)
+    {
+        Applications.Add(application);
+    }
+	// Method to update the status of a job application based on the company name
+	public void UpdateStatus(string companyName, ApplicationStatus newStatus)
+	{
+		var application = Applications.FirstOrDefault(a => a.CompanyName == companyName);
+		if (application != null)
+		{
+			application.Status = newStatus;
+		}
+		
+	}
+	
+}
