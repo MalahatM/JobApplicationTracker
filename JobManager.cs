@@ -17,5 +17,20 @@ class JobManager
 		}
 		
 	}
+	// Display all job applications
+public void ShowAll()
+
+{  // Check if there are any applications to display
+	 if (Applications.Count == 0)
+    {
+        Console.WriteLine("No job applications found.");
+        return;
+    }
+	// Loop through each application and print its summary
+    foreach (var application in Applications)
+    {
+        Console.WriteLine(application.GetSummary());
+    }
+}
 	
 }
