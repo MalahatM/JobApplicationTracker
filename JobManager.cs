@@ -58,7 +58,7 @@ public void SortByDate()
         application => application.ApplicationDate
     );
 	foreach (var application in sortedApplications)
-{
+{// Print the application date and its summary
 	Console.WriteLine($"{application.ApplicationDate:yyyy-MM-dd} - {application.GetSummary()}");
 }
 	}
