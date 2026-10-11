@@ -32,5 +32,23 @@ public void ShowAll()
         Console.WriteLine(application.GetSummary());
     }
 }
-	
+/// Display job applications filtered by their status
+public void ShowByStatus(ApplicationStatus status)
+{
+    var filteredApplications = Applications.Where(
+        application => application.Status == status
+    );
+
+    // Check if there are any applications with the specified status
+    if (!filteredApplications.Any())
+    {
+        Console.WriteLine("No applications found with this status.");
+        return;
+    }
+// Loop through each filtered application and print its summary
+    foreach (var application in filteredApplications)
+    {
+        Console.WriteLine(application.GetSummary());
+    }
+}
 }
