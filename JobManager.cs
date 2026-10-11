@@ -51,4 +51,15 @@ public void ShowByStatus(ApplicationStatus status)
         Console.WriteLine(application.GetSummary());
     }
 }
+// Method to sort job applications by date
+public void SortByDate()
+	{
+		 var sortedApplications = Applications.OrderByDescending(
+        application => application.ApplicationDate
+    );
+	foreach (var application in sortedApplications)
+{
+	Console.WriteLine($"{application.ApplicationDate:yyyy-MM-dd} - {application.GetSummary()}");
+}
+	}
 }
