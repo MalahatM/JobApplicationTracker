@@ -62,4 +62,41 @@ public void SortByDate()
 	Console.WriteLine($"{application.ApplicationDate:yyyy-MM-dd} - {application.GetSummary()}");
 }
 	}
+	// Display statistics about job applications
+public void ShowStatistics()
+{
+    int totalApplications = Applications.Count;
+    Console.WriteLine($"Total applications: {totalApplications}");
+
+
+	// Group job applications by their status using LINQ
+var statusGroups = Applications.GroupBy(
+    application => application.Status
+);
+
+// Display each status and the number of applications in that group
+foreach (var group in statusGroups)
+{
+    Console.WriteLine($"{group.Key}: {group.Count()}");
+}
+// Filter job applications that have received a response
+var respondedApplications = Applications.Where(
+    application => application.ResponseDate.HasValue
+);
+// Calculate the average number of days to receive a response
+
+if (respondedApplications.Any())
+{// Calculate the average number of days to receive a response
+    double averageResponseDays = respondedApplications.Average(
+        application => (application.ResponseDate!.Value - application.ApplicationDate).TotalDays
+    );
+
+    Console.WriteLine($"Average days to respond: {averageResponseDays:F2}");
+}
+// If there are no applications that have received a response, display a message
+else
+{
+    Console.WriteLine("No responses received yet.");
+}
+}
 }
