@@ -99,4 +99,23 @@ else
     Console.WriteLine("No responses received yet.");
 }
 }
+
+// Delete a job application by company name
+public void DeleteJob(string companyName)
+{
+var application = Applications.FirstOrDefault(
+    a => a.CompanyName == companyName
+);
+// Remove the application if it exists
+if (application != null)
+{
+    Applications.Remove(application);
+    Console.WriteLine("Job application deleted successfully.");
+}
+else
+// If the application does not exist, display a message
+{
+    Console.WriteLine("Job application not found.");
+}
+}
 }
