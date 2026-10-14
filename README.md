@@ -6,13 +6,17 @@ Job Application Tracker is a C# console application designed to help users organ
 The project is developed using object-oriented programming (OOP), LINQ, and Git/GitHub.
 
 ## Features
-- Add new job applications
+- Add new job applications with company name, position, salary expectation, and a user-defined application date
 - Display all job applications
-- Filter applications by status
-- Sort applications by application date
-- View application statistics
-- Update application status
+- Filter applications by status using LINQ
+- Sort applications by application date using LINQ
+- View statistics, including the number of applications per status and average response time
+- Update application status and record the date of the first response
 - Delete job applications
+- Display application statuses in different console colors
+- Find applications that have not received a response for more than 14 days using LINQ
+- Validate user input to prevent invalid entries
+
 - Exit the application
 
 ## Application Status
@@ -42,6 +46,7 @@ Each job application can have one of four statuses:
 - `Program.cs` — Handles the interactive console menu.
 - `JobApplication.cs` — Represents a job application and its properties.
 - `JobManager.cs` — Manages job applications using methods and LINQ.
+- `REFLECTION.txt` — Contains answers to the two reflection questions.
 
 ## Development Process
 The project is developed using separate Git branches, commits, and pull requests. Changes are reviewed and merged into the main branch.
@@ -53,6 +58,5 @@ Malahat Mortezavi
 October 2026
 
 ## Reflection
-The project helped me practice object-oriented programming, working with lists, using LINQ to filter and sort data, and managing code with Git and GitHub.
+The answers to the reflection questions are available in the separate `REFLECTION.txt` file.
 
-More features and improvements will be added during development.
