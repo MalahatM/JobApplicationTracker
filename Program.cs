@@ -79,8 +79,30 @@ case 1:
         break;
     }
 
-    // Set the application date to today
-    DateTime applicationDate = DateTime.Today;
+  // Ask the user to enter the application date
+Console.Write("Enter application date (yyyy-MM-dd): ");
+string dateInput = Console.ReadLine()!;
+// Convert the entered text into a valid date
+bool isValidDate = DateTime.TryParseExact(
+    dateInput,
+    "yyyy-MM-dd",
+    System.Globalization.CultureInfo.InvariantCulture,
+    System.Globalization.DateTimeStyles.None,
+    out DateTime applicationDate
+	
+);
+// Check if the entered date is valid
+if (!isValidDate)
+{
+    Console.WriteLine("Invalid date. Please use yyyy-MM-dd.");
+    break;
+}
+// Check if the application date is in the future
+if (applicationDate > DateTime.Today)
+{
+    Console.WriteLine("Application date cannot be in the future.");
+    break;
+}
 
     // Create a new job application object
     JobApplication newApplication = new JobApplication();
