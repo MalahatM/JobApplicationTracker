@@ -20,6 +20,8 @@ while (choice != 8)
     Console.WriteLine("6. Update status");
     Console.WriteLine("7. Delete application");
     Console.WriteLine("8. Exit");
+	// Display the unanswered applications menu option
+Console.WriteLine("9. Show unanswered applications (over 14 days)");
 
     // Ask the user to choose an option
     Console.Write("Enter your choice: ");
@@ -178,6 +180,13 @@ if (string.IsNullOrWhiteSpace(companyName))
 // Exit the application
 case 8:
     Console.WriteLine("Exiting the program.");
+    break;
+
+	
+
+// Show applications unanswered for more than 14 days
+case 9:
+    manager.ShowUnansweredApplications();
     break;
 
 

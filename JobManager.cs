@@ -9,19 +9,28 @@ class JobManager
     {
         Applications.Add(application);
     }
+// Update the status of a job application
+public void UpdateStatus(string companyName, ApplicationStatus newStatus)
+{
+    var application = Applications.FirstOrDefault(
+        a => a.CompanyName == companyName
+    );
 
-    // Method to update the status of a job application based on the company name
-    public void UpdateStatus(string companyName, ApplicationStatus newStatus)
+    if (application != null)
     {
-        var application = Applications.FirstOrDefault(
-            a => a.CompanyName == companyName
-        );
+        // Update the application status
+        application.Status = newStatus;
 
-        if (application != null)
+        // Save the date of the first response
+        if (newStatus != ApplicationStatus.Applied &&
+            application.ResponseDate == null)
         {
-            application.Status = newStatus;
+            application.ResponseDate = DateTime.Today;
         }
     }
+}
+ 
+ 
 
     // Set the console color based on the application status
     private void SetStatusColor(ApplicationStatus status)
@@ -184,4 +193,33 @@ public void SortByDate()
             Console.WriteLine("Job application not found.");
         }
     }
+	// Display applications with no response after more than 14 days
+public void ShowUnansweredApplications()
+{
+    // Filter unanswered applications using LINQ
+    var unansweredApplications = Applications.Where(
+        application => application.ResponseDate == null &&
+                       application.GetDaysSinceApplied() > 14
+    );
+	// Check if there are any unanswered applications
+if (!unansweredApplications.Any())
+{
+    Console.WriteLine("No unanswered applications older than 14 days.");
+    return;
+}
+// Display unanswered applications
+foreach (var application in unansweredApplications)
+{
+    // Set the color based on the application status
+    SetStatusColor(application.Status);
+
+    // Display the application summary and days since applied
+    Console.WriteLine(
+        $"{application.GetSummary()} - {application.GetDaysSinceApplied()} days ago"
+    );
+
+    // Reset the console color
+    Console.ResetColor();
+}
+}
 }
