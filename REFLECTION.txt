@@ -1,0 +1,9 @@
+Reflection – Job Application Tracker
+
+1. Hur hjälpte LINQ dig att skriva renare kod?
+
+LINQ hjälpte mig att skriva enklare och kortare kod. Istället för att använda många if-satser och foreach-loopar kunde jag använda metoder som Where(), GroupBy() och OrderByDescending().
+
+2. Vilken del av projektet var mest utmanande, och hur löste du den?
+
+Den svåraste delen för mig var att arbeta med datum. Jag hade svårt att förstå skillnaden mellan DateTime.Now och DateTime.Today. Först fick jag ett felaktigt resultat när jag räknade ut svarstiden. Jag löste problemet genom att testa koden och använda DateTime.Today istället för DateTime.Now.
